@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <!-- Fondo con gradiente -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="wallet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#e0e7ff"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo redondeado (esquinas redondeadas como los iconos de iOS) -->
+  <rect width="180" height="180" rx="39.6" fill="url(#bg)"/>
+  
+  <!-- Icono de billetera simplificado -->
+  <!-- Cuerpo principal de la billetera -->
+  <rect x="52.2" y="64.17" width="75.6" height="56.7" 
+        rx="8.505" fill="white" opacity="0.95"/>
+  
+  <!-- Solapa superior de la billetera -->
+  <rect x="52.2" y="57.366" width="56.699999999999996" height="11.340000000000002" 
+        rx="4.5360000000000005" fill="white" opacity="0.7"/>
+  
+  <!-- Cierre / botón de la billetera -->
+  <circle cx="114.192" cy="92.52000000000001" 
+          r="6.804" fill="#6366f1" opacity="0.8"/>
+  <circle cx="114.192" cy="92.52000000000001" 
+          r="3.402" fill="white"/>
+  
+  <!-- Línea decorativa tipo tarjeta -->
+  <line x1="59.760000000000005" y1="84.015" 
+        x2="90" y2="84.015" 
+        stroke="#c7d2fe" stroke-width="2.16" stroke-linecap="round"/>
+  <line x1="59.760000000000005" y1="93.654" 
+        x2="78.66" y2="93.654" 
+        stroke="#c7d2fe" stroke-width="2.16" stroke-linecap="round"/>
+  
+  <!-- Texto "SW" debajo -->
+  <text x="90" y="148.59" 
+        text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="17.64" font-weight="700" fill="white" opacity="0.9">
+    SplitWallet
+  </text>
+</svg>

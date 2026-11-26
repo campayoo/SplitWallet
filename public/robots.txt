@@ -1,0 +1,4 @@
+# robots.txt — SplitWallet
+# Permite que los buscadores indexen toda la app
+User-agent: *
+Allow: /

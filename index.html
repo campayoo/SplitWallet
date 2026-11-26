@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Viewport: configuración crítica para PWA en iPhone -->
+    <!-- width=device-width: el ancho se adapta al dispositivo -->
+    <!-- initial-scale=1.0: sin zoom al cargar -->
+    <!-- maximum-scale=1.0, user-scalable=no: evita zoom accidental con pellizco -->
+    <!-- viewport-fit=cover: permite que la app ocupe el espacio del notch/isla dinámica -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    
+    <!-- Título de la app -->
+    <title>SplitWallet</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/icons/icon-192x192.png" />
+    
+    <!-- === META TAGS ESPECÍFICOS PARA iOS (Safari) === -->
+    
+    <!-- apple-mobile-web-app-capable: le dice a Safari que esta web puede
+         abrirse como app nativa a pantalla completa (sin barra de dirección) -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    
+    <!-- apple-mobile-web-app-status-bar-style: controla cómo se muestra
+         la barra de estado (hora, batería, wifi) en iOS
+         "black-translucent" = la barra es transparente y tu contenido se extiende debajo -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- apple-mobile-web-app-title: el nombre que aparece debajo del icono
+         en la pantalla de inicio del iPhone -->
+    <meta name="apple-mobile-web-app-title" content="SplitWallet" />
+    
+    <!-- apple-touch-icon: el icono que se usa al "Añadir a pantalla de inicio"
+         Apple recomienda 180x180px -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png" />
+    
+    <!-- === FIN META TAGS iOS === -->
+    
+    <!-- Color del tema para la barra del navegador en Android/Chrome -->
+    <meta name="theme-color" content="#6366f1" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

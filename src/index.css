@@ -1,0 +1,195 @@
+/* ============================================
+   SplitWallet — Estilos Globales
+   ============================================
+   Este archivo contiene:
+   1. Importación de Tailwind CSS
+   2. Variables CSS para el tema claro/oscuro
+   3. Estilos base para que la app parezca nativa en iPhone
+   4. Ajustes de áreas seguras (safe areas) para iOS
+   ============================================ */
+
+/* Importa las utilidades de Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* ============================================
+   TEMA: Variables CSS personalizadas
+   ============================================
+   Usamos variables CSS en lugar de hardcodear colores directamente.
+   Ventaja: cambiar de tema claro a oscuro es tan simple como
+   cambiar los valores de estas variables.
+   ============================================ */
+
+/* Tema personalizado de Tailwind */
+@theme {
+  /* Colores principales de la marca */
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+
+  /* Colores de éxito (ingresos, confirmaciones) */
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+
+  /* Colores de advertencia (presupuesto cercano al límite) */
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+
+  /* Colores de peligro (presupuesto excedido, errores) */
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+}
+
+/* ============================================
+   TEMA CLARO (por defecto)
+   ============================================ */
+:root {
+  /* Fondos */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f1f5f9;
+  --color-bg-tertiary: #e2e8f0;
+  --color-bg-card: #ffffff;
+
+  /* Textos */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #94a3b8;
+  --color-text-inverse: #ffffff;
+
+  /* Bordes */
+  --color-border: #e2e8f0;
+  --color-border-focus: #6366f1;
+
+  /* Navegación inferior */
+  --color-nav-bg: rgba(255, 255, 255, 0.85);
+  --color-nav-border: #e2e8f0;
+}
+
+/* ============================================
+   TEMA OSCURO
+   ============================================
+   @media (prefers-color-scheme: dark):
+   Este media query detecta automáticamente si el usuario tiene
+   el modo oscuro activado en su iPhone/sistema operativo.
+   No necesitamos un botón de toggle — se adapta solo.
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-primary: #0f172a;
+    --color-bg-secondary: #1e293b;
+    --color-bg-tertiary: #334155;
+    --color-bg-card: #1e293b;
+
+    --color-text-primary: #f1f5f9;
+    --color-text-secondary: #94a3b8;
+    --color-text-tertiary: #64748b;
+    --color-text-inverse: #0f172a;
+
+    --color-border: #334155;
+    --color-border-focus: #818cf8;
+
+    --color-nav-bg: rgba(15, 23, 42, 0.85);
+    --color-nav-border: #334155;
+  }
+}
+
+/* ============================================
+   ESTILOS BASE — Aspecto nativo en iOS
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* Altura real del viewport en iOS (evita el bug de 100vh en Safari) */
+  height: 100%;
+}
+
+body {
+  /* Tipografía nativa del sistema operativo: se verá como una app real */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  height: 100%;
+  overflow: hidden;
+  
+  /* -webkit-font-smoothing: antialiased → texto más suave en Safari/Chrome */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+/* ============================================
+   ANTI-WEB: Trucos para que NO parezca un sitio web
+   ============================================ */
+
+/* Evita que el texto se pueda seleccionar al hacer tap
+   (como pasa en apps nativas) */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Permite selección en campos de texto (inputs y textareas) */
+input, textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Elimina el rectángulo gris que Safari muestra al hacer tap en elementos */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Elimina el zoom automático cuando haces focus en un input (iOS) */
+input, select, textarea {
+  font-size: 16px;
+}
+
+/* Scroll suave nativo de iOS */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+/* ============================================
+   SAFE AREAS — Respetar el notch y la isla dinámica de iOS
+   ============================================
+   env(safe-area-inset-*) son variables CSS que el navegador
+   rellena automáticamente con el espacio del notch/isla dinámica
+   y la barra de inicio inferior de iOS.
+   
+   Si la app no tiene notch (ej. un Android), estos valores son 0.
+   ============================================ */
+
+/* Contenedor de la cabecera: respeta el espacio del notch arriba */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Contenedor de la navegación inferior: respeta la barra de inicio de iOS */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Lateral (para dispositivos rotados, poco común en nuestra app) */
+.safe-area-left {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+.safe-area-right {
+  padding-right: env(safe-area-inset-right, 0px);
+}
